@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2hiwhv4yiu1v"]
+
+[ext_resource type="Texture2D" uid="uid://bnqmxkvlsbjlx" path="res://Sprites/Island.png" id="1_iky8i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Island" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, -2)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("1_iky8i")

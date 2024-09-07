@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cqlokb54vf1xd"]
+
+[node name="RouteLine" type="Line2D"]
+width = 5.0
+default_color = Color(0.121569, 0.439216, 1, 1)

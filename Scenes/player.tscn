@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://t4crc1dqiye6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nwyhy"]
+load_path = "res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4k5df"]
+load_path = "res://.godot/imported/Coin.png-c2cd5c0bdd61476fb24bcd9448984ab7.ctex"
+
+[node name="Player" type="Sprite2D"]
+modulate = Color(0.172549, 1, 1, 1)
+position = Vector2(-61, -132)
+texture = SubResource("CompressedTexture2D_nwyhy")
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(2, -51)
+texture = SubResource("CompressedTexture2D_4k5df")

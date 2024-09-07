@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://drq2e3jq1lhgm"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c0645"]
+[ext_resource type="PackedScene" uid="uid://c2hiwhv4yiu1v" path="res://Scenes/Island.tscn" id="2_2md02"]
+[ext_resource type="PackedScene" uid="uid://cqlokb54vf1xd" path="res://Scenes/RouteLine.tscn" id="3_gl5fy"]
+[ext_resource type="PackedScene" uid="uid://s5qidkntg5m3" path="res://Scenes/BorderLine.tscn" id="4_oqblu"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_c0645")
+island_scene = ExtResource("2_2md02")
+route_scene = ExtResource("3_gl5fy")
+border_scene = ExtResource("4_oqblu")
+
+[node name="IslandMap" type="Window" parent="."]
+position = Vector2i(50, 50)
+size = Vector2i(500, 550)
+borderless = true
+
+[node name="ColorRect" type="ColorRect" parent="IslandMap"]
+custom_minimum_size = Vector2(1000, 2000)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.447059, 0.737255, 0.917647, 1)
+
+[node name="PopChart" type="Window" parent="."]
+position = Vector2i(600, 300)
+size = Vector2i(500, 300)
+borderless = true
+
+[node name="RegenerateIslands" type="Button" parent="."]
+offset_left = 602.0
+offset_top = 30.0
+offset_right = 730.0
+offset_bottom = 89.0
+text = "Regenerate
+Islands"
+
+[node name="RegenerateInitialPop" type="Button" parent="."]
+offset_left = 774.0
+offset_top = 30.0
+offset_right = 902.0
+offset_bottom = 89.0
+text = "Regenerate
+Initial Pop"
+
+[node name="Simulate" type="Button" parent="."]
+offset_left = 947.0
+offset_top = 29.0
+offset_right = 1075.0
+offset_bottom = 88.0
+text = "Simulate"
+
+[node name="MaxDistance" type="Label" parent="."]
+offset_left = 598.0
+offset_top = 235.0
+offset_right = 814.0
+offset_bottom = 295.0
+
+[node name="MinDistance" type="Label" parent="."]
+offset_left = 864.0
+offset_top = 235.0
+offset_right = 1080.0
+offset_bottom = 295.0
+
+[node name="NumIslands" type="HSlider" parent="."]
+offset_left = 617.0
+offset_top = 132.0
+offset_right = 812.0
+offset_bottom = 199.0
+min_value = 5.0
+max_value = 50.0
+value = 20.0
+
+[node name="NumGenerations" type="HSlider" parent="."]
+offset_left = 851.0
+offset_top = 132.0
+offset_right = 1046.0
+offset_bottom = 199.0
+min_value = 1.0
+max_value = 1000.0
+value = 200.0
+
+[node name="NumIslandsLabel" type="Label" parent="."]
+offset_left = 619.0
+offset_top = 128.0
+offset_right = 762.0
+offset_bottom = 151.0
+
+[node name="NumGenerationsLabel" type="Label" parent="."]
+offset_left = 853.0
+offset_top = 130.0
+offset_right = 1036.0
+offset_bottom = 153.0
+
+[connection signal="pressed" from="RegenerateIslands" to="." method="_on_regenerate_islands_pressed"]
+[connection signal="pressed" from="RegenerateInitialPop" to="." method="_on_regenerate_initial_pop_pressed"]
+[connection signal="pressed" from="Simulate" to="." method="_on_simulate_pressed"]
+[connection signal="value_changed" from="NumIslands" to="." method="_on_num_islands_value_changed"]
+[connection signal="drag_ended" from="NumGenerations" to="." method="_on_num_generations_drag_ended"]
+[connection signal="value_changed" from="NumGenerations" to="." method="_on_num_generations_value_changed"]

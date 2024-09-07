@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv3uuvluqb7u"]
+
+[ext_resource type="PackedScene" uid="uid://t4crc1dqiye6" path="res://Scenes/player.tscn" id="1_ricqu"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_158k0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ricqu")]
+position = Vector2(93, -319)
+script = ExtResource("2_158k0")
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 630.0
+offset_top = -104.0
+offset_right = 927.0
+offset_bottom = 490.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 199.0
+offset_top = 126.0
+offset_right = 522.0
+offset_bottom = 449.0
