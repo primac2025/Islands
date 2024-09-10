@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://drq2e3jq1lhgm"]
+[gd_scene load_steps=12 format=3 uid="uid://drq2e3jq1lhgm"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c0645"]
 [ext_resource type="PackedScene" uid="uid://c2hiwhv4yiu1v" path="res://Scenes/Island.tscn" id="2_2md02"]
 [ext_resource type="PackedScene" uid="uid://cqlokb54vf1xd" path="res://Scenes/RouteLine.tscn" id="3_gl5fy"]
 [ext_resource type="PackedScene" uid="uid://s5qidkntg5m3" path="res://Scenes/BorderLine.tscn" id="4_oqblu"]
+[ext_resource type="Theme" uid="uid://bwpvilwj7vas3" path="res://island_theme.tres" id="5_ijxiu"]
+[ext_resource type="Theme" uid="uid://c5nb88u3gx84s" path="res://help_label.tres" id="5_ud418"]
+[ext_resource type="Theme" uid="uid://cshfw6hckr24j" path="res://simulate_button.tres" id="7_6eoiq"]
+[ext_resource type="StyleBox" uid="uid://b0ntg0nhdurg3" path="res://Resources/button_style_box_flat_hover.tres" id="7_fm7nd"]
+[ext_resource type="StyleBox" uid="uid://dki6ecb8ml65u" path="res://Resources/button_style_box_flat_normal.tres" id="7_hvwae"]
+[ext_resource type="StyleBox" uid="uid://b2tix5g8nykdf" path="res://Resources/simulate_stylebox_flat_normal.tres" id="9_usars"]
+[ext_resource type="StyleBox" uid="uid://cqeoa6kyjolmu" path="res://Resources/simulate_stylebox_flat_pressed.tres" id="10_3pii3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_c0645")
@@ -13,7 +20,7 @@ border_scene = ExtResource("4_oqblu")
 
 [node name="IslandMap" type="Window" parent="."]
 position = Vector2i(50, 50)
-size = Vector2i(500, 550)
+size = Vector2i(980, 980)
 borderless = true
 
 [node name="ColorRect" type="ColorRect" parent="IslandMap"]
@@ -23,74 +30,123 @@ offset_bottom = 40.0
 color = Color(0.447059, 0.737255, 0.917647, 1)
 
 [node name="PopChart" type="Window" parent="."]
-position = Vector2i(600, 300)
-size = Vector2i(500, 300)
+position = Vector2i(1070, 430)
+size = Vector2i(800, 600)
 borderless = true
 
+[node name="ConfigurePanel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.596078)
+offset_left = 1060.0
+offset_top = 66.0
+offset_right = 1107.0
+offset_bottom = 99.0
+scale = Vector2(12.6745, 8.0546)
+
+[node name="Help1Label" type="Label" parent="."]
+offset_left = 1234.0
+offset_top = 19.0
+offset_right = 1481.0
+offset_bottom = 76.0
+theme = ExtResource("5_ud418")
+text = "Step 1: Configure"
+horizontal_alignment = 1
+
+[node name="Help2Label" type="Label" parent="."]
+offset_left = 1704.0
+offset_top = 19.0
+offset_right = 1840.0
+offset_bottom = 71.0
+theme = ExtResource("5_ud418")
+text = "Step 2:"
+horizontal_alignment = 1
+
 [node name="RegenerateIslands" type="Button" parent="."]
-offset_left = 602.0
-offset_top = 30.0
-offset_right = 730.0
-offset_bottom = 89.0
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1140.0
+offset_top = 100.0
+offset_right = 1313.0
+offset_bottom = 200.0
+theme = ExtResource("5_ijxiu")
+theme_override_styles/normal = ExtResource("7_hvwae")
+theme_override_styles/hover = ExtResource("7_fm7nd")
+theme_override_styles/pressed = ExtResource("7_hvwae")
 text = "Regenerate
 Islands"
 
 [node name="RegenerateInitialPop" type="Button" parent="."]
-offset_left = 774.0
-offset_top = 30.0
-offset_right = 902.0
-offset_bottom = 89.0
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1400.0
+offset_top = 100.0
+offset_right = 1573.0
+offset_bottom = 200.0
+theme = ExtResource("5_ijxiu")
+theme_override_styles/normal = ExtResource("7_hvwae")
+theme_override_styles/hover = ExtResource("7_fm7nd")
+theme_override_styles/pressed = ExtResource("7_hvwae")
 text = "Regenerate
 Initial Pop"
 
 [node name="Simulate" type="Button" parent="."]
-offset_left = 947.0
-offset_top = 29.0
-offset_right = 1075.0
-offset_bottom = 88.0
-text = "Simulate"
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1700.0
+offset_top = 150.0
+offset_right = 1876.0
+offset_bottom = 250.0
+theme = ExtResource("7_6eoiq")
+theme_override_styles/normal = ExtResource("9_usars")
+theme_override_styles/hover = ExtResource("10_3pii3")
+theme_override_styles/pressed = ExtResource("9_usars")
+text = "Simulate!"
 
 [node name="MaxDistance" type="Label" parent="."]
-offset_left = 598.0
-offset_top = 235.0
-offset_right = 814.0
-offset_bottom = 295.0
+offset_left = 1070.0
+offset_top = 350.0
+offset_right = 1286.0
+offset_bottom = 410.0
+theme = ExtResource("5_ijxiu")
+text = "Max"
 
 [node name="MinDistance" type="Label" parent="."]
-offset_left = 864.0
-offset_top = 235.0
-offset_right = 1080.0
-offset_bottom = 295.0
+offset_left = 1470.0
+offset_top = 350.0
+offset_right = 1686.0
+offset_bottom = 410.0
+theme = ExtResource("5_ijxiu")
+text = "Min"
+
+[node name="NumIslandsLabel" type="Label" parent="."]
+offset_left = 1100.0
+offset_top = 230.0
+offset_right = 1282.0
+offset_bottom = 272.0
+theme = ExtResource("5_ijxiu")
+text = "Num Islands"
+
+[node name="NumGenerationsLabel" type="Label" parent="."]
+offset_left = 1340.0
+offset_top = 230.0
+offset_right = 1597.0
+offset_bottom = 272.0
+theme = ExtResource("5_ijxiu")
+text = "Num Generations"
 
 [node name="NumIslands" type="HSlider" parent="."]
-offset_left = 617.0
-offset_top = 132.0
-offset_right = 812.0
-offset_bottom = 199.0
+offset_left = 1100.0
+offset_top = 250.0
+offset_right = 1300.0
+offset_bottom = 317.0
 min_value = 5.0
 max_value = 50.0
 value = 20.0
 
 [node name="NumGenerations" type="HSlider" parent="."]
-offset_left = 851.0
-offset_top = 132.0
-offset_right = 1046.0
-offset_bottom = 199.0
+offset_left = 1340.0
+offset_top = 250.0
+offset_right = 1528.0
+offset_bottom = 317.0
 min_value = 1.0
 max_value = 1000.0
 value = 200.0
-
-[node name="NumIslandsLabel" type="Label" parent="."]
-offset_left = 619.0
-offset_top = 128.0
-offset_right = 762.0
-offset_bottom = 151.0
-
-[node name="NumGenerationsLabel" type="Label" parent="."]
-offset_left = 853.0
-offset_top = 130.0
-offset_right = 1036.0
-offset_bottom = 153.0
 
 [connection signal="pressed" from="RegenerateIslands" to="." method="_on_regenerate_islands_pressed"]
 [connection signal="pressed" from="RegenerateInitialPop" to="." method="_on_regenerate_initial_pop_pressed"]

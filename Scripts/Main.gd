@@ -30,14 +30,13 @@ var num_elites      : int = 20
 var graph_line : Line2D
 var grid_size : int = 50
 
-
 # Called when the node enters the scene tree for the first time. (Beginning)
 func _ready():
 	draw_borders()
 	initialize_islands()
 	
-	$NumIslandsLabel.set_text("Number of Islands: %d" % [$NumIslands.get_value()])
-	$NumGenerationsLabel.set_text("Number of Generations: %d" % [$NumGenerations.get_value()])
+	$NumIslandsLabel.set_text("Num Islands: %d" % [$NumIslands.get_value()])
+	$NumGenerationsLabel.set_text("Num Generations: %d" % [$NumGenerations.get_value()])
 	
 	if 0:
 		var test_parents : Array
@@ -129,8 +128,8 @@ func initialize_candidates():
 	init_candidates.sort_custom(sort_routes)
 	draw_best_route(init_candidates[0])
 	
-	$MaxDistance.set_text("Maximum Distance: %0.1f" % [init_candidates[0].distance])
-	$MinDistance.set_text("Minimum Distance: %0.1f" % [init_candidates[0].distance])
+	$MaxDistance.set_text("Max Distance: %0.1f" % [init_candidates[0].distance])
+	$MinDistance.set_text("Min Distance: %0.1f" % [init_candidates[0].distance])
 	
 	if graph_line != null:
 		remove_child(graph_line)
@@ -261,16 +260,16 @@ func _on_simulate_pressed():
 	
 	draw_best_route(best_candidate)
 	
-	$MaxDistance.set_text("Maximum Distance: %0.1f" % [max_best_distance])
-	$MinDistance.set_text("Minimum Distance: %0.1f" % [min_best_distance])
+	$MaxDistance.set_text("Max Distance: %0.1f" % [max_best_distance])
+	$MinDistance.set_text("Min Distance: %0.1f" % [min_best_distance])
 
 # Sets num islands based on 'Number of Islands' slider, initializes islands
 func _on_num_islands_value_changed(value):
 	num_islands = value
 	initialize_islands()
-	$NumIslandsLabel.set_text("Number of Islands: %d" % [num_islands])
+	$NumIslandsLabel.set_text("Num Islands: %d" % [num_islands])
 
 # Sets num generations based on 'Number of Generations' slider
 func _on_num_generations_value_changed(value):
 	num_generations = value
-	$NumGenerationsLabel.set_text("Number of Generations: %d" % [num_generations])
+	$NumGenerationsLabel.set_text("Num Generations: %d" % [num_generations])

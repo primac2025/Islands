@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://drq2e3jq1lhgm"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c0645"]
+[ext_resource type="PackedScene" uid="uid://c2hiwhv4yiu1v" path="res://Scenes/Island.tscn" id="2_2md02"]
+[ext_resource type="PackedScene" uid="uid://cqlokb54vf1xd" path="res://Scenes/RouteLine.tscn" id="3_gl5fy"]
+[ext_resource type="PackedScene" uid="uid://s5qidkntg5m3" path="res://Scenes/BorderLine.tscn" id="4_oqblu"]
+[ext_resource type="Theme" uid="uid://bwpvilwj7vas3" path="res://island_theme.tres" id="5_ijxiu"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_c0645")
+island_scene = ExtResource("2_2md02")
+route_scene = ExtResource("3_gl5fy")
+border_scene = ExtResource("4_oqblu")
+
+[node name="IslandMap" type="Window" parent="."]
+position = Vector2i(50, 200)
+size = Vector2i(980, 830)
+
+[node name="ColorRect" type="ColorRect" parent="IslandMap"]
+custom_minimum_size = Vector2(1000, 2000)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.447059, 0.737255, 0.917647, 1)
+
+[node name="PopChart" type="Window" parent="."]
+position = Vector2i(1070, 430)
+size = Vector2i(800, 600)
+
+[node name="HelpLabel" type="Label" parent="."]
+offset_left = 378.0
+offset_top = 26.0
+offset_right = 1475.0
+offset_bottom = 113.0
+theme = ExtResource("5_ijxiu")
+text = "Click \"Simulate\" to start simulation."
+
+[node name="RegenerateIslands" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1150.0
+offset_top = 120.0
+offset_right = 1323.0
+offset_bottom = 220.0
+theme = ExtResource("5_ijxiu")
+text = "Regenerate
+Islands"
+
+[node name="RegenerateInitialPop" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1410.0
+offset_top = 120.0
+offset_right = 1583.0
+offset_bottom = 220.0
+theme = ExtResource("5_ijxiu")
+text = "Regenerate
+Initial Pop"
+
+[node name="Simulate" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1670.0
+offset_top = 120.0
+offset_right = 1805.0
+offset_bottom = 220.0
+theme = ExtResource("5_ijxiu")
+text = "Simulate"
+
+[node name="MaxDistance" type="Label" parent="."]
+offset_left = 1070.0
+offset_top = 350.0
+offset_right = 1286.0
+offset_bottom = 410.0
+theme = ExtResource("5_ijxiu")
+text = "Max"
+
+[node name="MinDistance" type="Label" parent="."]
+offset_left = 1470.0
+offset_top = 350.0
+offset_right = 1686.0
+offset_bottom = 410.0
+theme = ExtResource("5_ijxiu")
+text = "Min"
+
+[node name="NumIslands" type="HSlider" parent="."]
+offset_left = 1070.0
+offset_top = 285.0
+offset_right = 1420.0
+offset_bottom = 352.0
+min_value = 5.0
+max_value = 50.0
+value = 20.0
+
+[node name="NumGenerations" type="HSlider" parent="."]
+offset_left = 1470.0
+offset_top = 285.0
+offset_right = 1820.0
+offset_bottom = 352.0
+min_value = 1.0
+max_value = 1000.0
+value = 200.0
+
+[node name="NumIslandsLabel" type="Label" parent="."]
+offset_left = 1070.0
+offset_top = 260.0
+offset_right = 1252.0
+offset_bottom = 302.0
+theme = ExtResource("5_ijxiu")
+text = "Num Islands"
+
+[node name="NumGenerationsLabel" type="Label" parent="."]
+offset_left = 1470.0
+offset_top = 260.0
+offset_right = 1727.0
+offset_bottom = 302.0
+theme = ExtResource("5_ijxiu")
+text = "Num Generations"
+
+[connection signal="pressed" from="RegenerateIslands" to="." method="_on_regenerate_islands_pressed"]
+[connection signal="pressed" from="RegenerateInitialPop" to="." method="_on_regenerate_initial_pop_pressed"]
+[connection signal="pressed" from="Simulate" to="." method="_on_simulate_pressed"]
+[connection signal="value_changed" from="NumIslands" to="." method="_on_num_islands_value_changed"]
+[connection signal="drag_ended" from="NumGenerations" to="." method="_on_num_generations_drag_ended"]
+[connection signal="value_changed" from="NumGenerations" to="." method="_on_num_generations_value_changed"]
